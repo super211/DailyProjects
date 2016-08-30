@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">n3tsadm1n</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/netspaydb</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+<!--   <mapping resource="sg/com/nets/recon/hibernate/IiiKioske.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IiiRecon.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IiiTandem.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IiKioskcn.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IiNcode.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IiRecon.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IKioske.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/INcode.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IRecon.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IvKioskc.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IvRecon.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/IvTandem.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/TransactionDetail.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/ViNcode.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/ViRecon.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/ViSingteltug.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/VKioskn.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/VRecon.hbm.xml"/>
+  <mapping resource="sg/com/nets/recon/hibernate/VTandem.hbm.xml"/> -->
+ </session-factory>
+</hibernate-configuration>
