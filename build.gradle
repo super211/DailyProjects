@@ -1,0 +1,113 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'distribution'
+
+buildscript {
+	repositories {
+		mavenCentral()
+		maven {
+			url 'https://repository-achartengine.forge.cloudbees.com/snapshot/'
+		}
+	}
+
+}
+
+group = 'com.tdsecurities.vms.te'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+ext {
+	solaceVersion = '6.2.0.64'
+	springVersion = '4.3.2.RELEASE'
+	slf4jVersion = '1.7.21'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url 'https://repository-achartengine.forge.cloudbees.com/snapshot/'
+    }
+    jcenter {
+        url 'http://jcenter.bintray.com/'
+    }
+}
+
+dependencies {
+	configurations.all {
+		exclude group: "commons-logging", module: "commons-logging"
+	}
+	compile "org.slf4j:slf4j-api:${slf4jVersion}",
+		"org.slf4j:jcl-over-slf4j:${slf4jVersion}",
+		'ch.qos.logback:logback-classic:1.1.7',
+		"solace:sol-common:${solaceVersion}",
+		"solace:sol-jcsmp:${solaceVersion}",
+		"solace:sol-jms:${solaceVersion}",
+		'commons-lang:commons-lang:2.6',
+		'com.tdsecurities.vms.te:te-utilities:0.3.0',
+		"org.springframework:spring-context:${springVersion}",
+		"org.springframework:spring-jms:${springVersion}",
+		"org.springframework:spring-jdbc:${springVersion}",
+		'org.apache.tomcat:tomcat-jdbc:8.5.4',
+		'javax.jms:jms-api:1.1-rev-1',
+		'org.apache.poi:poi-ooxml:3.14',
+		'com.oracle:ojdbc7:12.1.0.2',
+		'com.jayway.jsonpath:json-path:2.2.0',
+		'org.xmlunit:xmlunit-core:2.1.1',
+		'joda-time:joda-time:2.9.4',
+		'com.squareup.okhttp3:okhttp:3.4.1',
+		'org.jodd:jodd-lagarto:3.7.1'
+	testCompile "org.springframework:spring-test:${springVersion}",
+		'junit:junit:4.12'
+}
+
+test {
+	exclude '**/*IT.class'
+}
+
+jar {
+	excludes = [
+		'*.properties',
+		'*.xml'
+	]
+}
+
+distributions {
+	main {
+		contents {
+			into('lib') {
+				from(project.configurations.runtime)
+				from(jar)
+			}
+			into('config') {
+				from('config')
+			}
+			from('src/main/cli')
+			from('keystore.jks')
+		}
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact distZip
+		}
+	}
+	repositories {
+		maven {
+			name 'nexus-releases'
+			url 'http://nexus.mgmt1.cloud.td.com/nexus/content/repositories/TDS-Releases/'
+		}
+		maven {
+			name 'nexus-snapshots'
+			url 'http://nexus.mgmt1.cloud.td.com/nexus/content/repositories/TDS-Snapshots/'
+		}
+	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+    distributionUrl = 'http://services.gradle.org/distributions/gradle-3.0-bin.zip'
+}
