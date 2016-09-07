@@ -10,7 +10,7 @@ public class HelloWorldConfig {
 		return new HelloWorld();
 	}
 	
-	@Bean
+	@Bean(initMethod="init", destroyMethod="cleanup") //Initialization and destruction callback methods, much like Spring XML's init-method and destroy-method attributes on the bean element
 	public Foo foo(){
 		return new Foo(bar()); 
 	}
