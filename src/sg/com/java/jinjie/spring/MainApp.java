@@ -1,6 +1,6 @@
 package sg.com.java.jinjie.spring;
 
-//http://www.tutorialspoint.com/spring/spring_bean_scopes.htm
+//http://www.tutorialspoint.com/spring/spring_bean_scopes.htm Spring - Bean Scopes
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

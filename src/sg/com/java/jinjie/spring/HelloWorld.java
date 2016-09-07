@@ -17,6 +17,10 @@ public class HelloWorld {
 		System.out.println(helloWorld.getBarMessage());
 		
 		Foo foo = ctx.getBean(Foo.class);
+		
+		ApplicationContext ctxB = new AnnotationConfigApplicationContext(HelloWorldConfigB.class);
+		Bar bar = ctxB.getBean(Bar.class); // The bean of Bar was defined in HelloWorldConfig, but it can be imported into HelloWorldConfigB
+		System.out.println(bar.getMessage());
 	}
 	
 	public void setMessage(String message){
