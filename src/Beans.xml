@@ -13,4 +13,8 @@
 
 	<bean id="cStopEventHandler" class="sg.com.java.jinjie.spring.CStopEventHandler" />
 
+	<bean id="customEventHandler" class="sg.com.java.jinjie.spring.CustomEventHandler" />
+
+	<bean id="customEventPublisher" class="sg.com.java.jinjie.spring.CustomEventPublisher" />
+
 </beans>

@@ -19,6 +19,10 @@ public class MainApp {
 		System.out.println(objB.getMessage()); //I am object A
 		
 		context.stop();
+		
+		CustomEventPublisher cvp = (CustomEventPublisher)context.getBean("customEventPublisher");
+		cvp.publish();
+		cvp.publish();
 		context.close();
 	}
 
