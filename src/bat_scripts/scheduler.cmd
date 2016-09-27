@@ -1,3 +1,4 @@
+::http://steve-jansen.github.io/guides/windows-batch-scripting/
 type scheduler.log | find "analysis complete (" >> 0result.txt
 
 set sum=0
